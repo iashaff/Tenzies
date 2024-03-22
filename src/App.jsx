@@ -4,7 +4,7 @@ import Confetti from 'react-confetti'
 import './App.css'
 import Die from './Die' 
 
-function App() {
+export default function App() {
     const [dice, setDice] = useState(allNewDice)
     const [tenzies, setTenzies] = useState(false)
     const [rollCount, setRollCount] = useState(0)
@@ -91,4 +91,4 @@ function App() {
     )
 }
 
-export default App
+
