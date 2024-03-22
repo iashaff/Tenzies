@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import {nanoid} from 'nanoid'
 import Confetti from 'react-confetti'
+import { useWindowSize } from 'react-use'
 import './App.css'
 import Die from './Die' 
 
@@ -8,6 +9,7 @@ export default function App() {
     const [dice, setDice] = useState(allNewDice)
     const [tenzies, setTenzies] = useState(false)
     const [rollCount, setRollCount] = useState(0)
+    const { width, hieght } = useWindowSize()
 
     useEffect(() => {
       const allHeldedDice = dice.every(die => die.isHeld)
@@ -73,7 +75,7 @@ export default function App() {
     return ( 
      <main className='main'>
      {rollCount ? <p className='dice-count'>Dice rolls: <span>{rollCount}</span></p> : ''}
-     { tenzies && <Confetti />}
+     { tenzies && <Confetti width={width} height={hieght} />}
      <h1 className="title">Tenzies</h1>
         <p className="instructions">{tenzies ? "You Won!" : `Roll until all dice are the same. 
             Click each die to freeze it at its current value between rolls.`}
